@@ -1,4 +1,26 @@
+<!-- Good job overall! You responded to all the requirements and also added some of the additional elements we asked for.
+  The HTML code is well structured and formatted and I appreciate your comments within the code as well. I'm particularly
+  happy to see the consistent inclusion of alt-text in all images.
+
+  As for things to consider for further improvement, I've left more detailed comments throughout the two html files. Generally
+  speaking, there are some issues with the semantics and inconsistencies in the hierarchy of elements used. While they might not 
+  cause issues with the way the pages are rendered, they might reduce accessibility by interfering with/confusing screen readers
+  and similar, and also reduce readability of your code for possible collaborators. Within the browser of your choice, you should
+  also be able to right-click -> view page source to see the HTML code with some errors highlighted.
+
+  I'm looking forward to what you will all achieve for the CSS and JavaScript challenges!
+-->
+
 <!DOCTYPE html>
+
+<!-- 
+  While NOT a concern in the scope of this exercise, I'd recommend getting used to creating a full boilerplate, always. Meta 
+  information on language, encoding and similar are crucial in ensuring functionality, accessibility and responsiveness across 
+  different devices, and even SEO and discoverability of the page.
+
+  VSCode and similar also provide functionality to create the basics for the boilerplate almost automatically.
+ -->
+
 <html>
 
 <head>
@@ -10,9 +32,18 @@
   <!--Here goes the Intro-->
   <!--<a href="1st Code Challenge\Autumm-blog.html">WebDev Insights - Home</a>-->
   <header>
+    <!-- 
+      Ideally, headers should follow each other in properly descending order - jumping from h1 directly to h2 breaks this convention.
+      Understandably, you weren't allowed to use CSS yet so I can imagine that you did this for styling/layout reasons.
+
+      Also be aware that emoji are quite a recent addition to HTML.
+     -->
     <h1 id="top">Autumn in Germany: A Season of Vibrant Colors, Rich Traditions, and Endless Delights</h1>
     <h4><em>The WebDev Insights Blog &#128640;</em></h4>
   </header>
+  <!-- 
+    Love seeing a <nav>!
+   -->
   <nav>
     <ul>
       <li><a href="./About-us.html">About Us</a></li>
@@ -20,6 +51,15 @@
   </nav>
   <img src="./img/img2.jpg" width="640" height="427" alt="Picture of a typical German village with half-timbered houses"> 
 
+  <!-- 
+    While the prompt mentioned not relying on <div> too much, the following paragraphs would have warrranted being grouped in some
+    sort of encompassing element - be it a <div> or something more appropriate or specific such as an <article> or <section> tag.
+
+    Similarly, as you used <header> and <footer>, you could have wrapped the entire main content within a <main> tag to improve
+    semantics and understanding of the hierarchy of elements - point in case, I'm not sure if this comment should have come before 
+    the <img> tag above: is the image part of the navigation bar? Does it belong to the header? Or is it already part of the main
+    content of the website?
+   -->
   <p>As the summer sun begins to fade, Germany transforms into a kaleidoscope of golden shades, crimson leaves, and a cozy atmosphere. 
     Autumn in Germany is a truly magical experience, offering a unique blend of natural beauty, cultural richness, and festive cheer. 
     Autumn here is not just a season; it's an experience that captivates the senses and warms the soul.From the picturesque Alps to the scenic Rhine Valley, 
@@ -42,6 +82,9 @@
   <p>Have you had the chance to experience this enchanting season in Germany? If not, Germany's autumn season offers countless opportunities for 
     exploration and enjoyment. <strong>Here are some of the top experiences to add to your itinerary:</strong></p>
     
+  <!-- 
+    Always love to see elements that help navigating the website!
+   -->
   <ol>
    <li><a href="#tip1">The Festival of Lights in Berlin</a></li>
    <li><a href="#tip2">The Oktoberfest</a></li>
@@ -105,6 +148,16 @@
       delightful experience. Many lakeside towns host autumn festivals, offering local food, music, and crafts!
       Here are some of the most beautiful lakes you can visit:  
     </p>
+
+    <!-- 
+      Nice to see <figure> and <figcaption>, but sadly the hierarchy gets mixed up. Even within your code as-is, you sometimes have 
+      the <li> nested within the <figcaption>, sometimes the other way around. These inconsistencies also sometimes mean that you
+      close the containing tag first, then the nested one, which is therefore considered a stray tag. These mix-ups easily happen
+      when copying code around or refactoring it, but especially with JavaScript these errors become more and more dangerous.
+
+      Ideally, the <li> should be the direct children of the <ul>, and then within the individual <li> tags would be where you
+      house the <figure> and nested <figcaption> tags.
+     -->
     <ul>
         <figure>
                 <a href="https://www.koenigssee.com/" target="_blank" rel="noopener noreferrer">
@@ -178,5 +231,8 @@
   <a href="./About-us.html"> About Us</a>
 
 </body>
+<!-- 
+  The footer should still be part of the body.
+ -->
 <footer>  &copy; 2024 The WebDev Insights Team </footer>
 </html>
