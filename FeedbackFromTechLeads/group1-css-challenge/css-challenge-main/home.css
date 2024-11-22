@@ -1,0 +1,396 @@
+/* 
+  Great job! I know this wasn’t directly part of the challenge, but I wanted to give a shout out 
+  for the gorgeous design. It’s quite minimalistic and clean and overall really well 
+  thought out and coherent. The fact that you managed to translate these design sensibilities 
+  into proper CSS styles and you were able to realize your vision shows great skill. It makes 
+  me want to see the all other pages of the website, as well!
+
+  You’ve covered most of the requirements and nice-to-haves, but I noticed a few things. First, 
+  you only used one kind of combinators, and then there are no media queries. There are other 
+  general issues with accessibility & responsiveness, e.g. due to relying on static units like 
+  `px` a lot. Especially for font sizes, `rem` and `em` are nice to use. And while you used `%` 
+  a lot, you could have also played around more with other relative units such as `vw` or `vh`. 
+  It would also have been helpful to know who worked on what part specifically.
+
+  I already mentioned this over in the HTML file, but your naming was inconsistent, not just
+  in regards to terms used, but also the style (kebab vs. snake case). There might be a split 
+  between the two of you here, but it's important to align on these conventions early. 
+  It’s fine for now (and happens in professional work too), but setting ground rules and sticking 
+  to them throughout the code, especially while using version control like Git, will make work 
+  smoother. Some inconsistent formatting was also noticed — consider using auto-formatting 
+  tools.
+
+  You used a lot of very specific classes where combinators could have simplified the code. 
+  For example, is the `.nav-container` class necessary when `header nav` could suffice? It’s a 
+  delicate balance, but it’s generally a good idea to combine both classes and general elements. 
+  There are also some unnecessary combinators, like in `.nav-links ul li a`, where `.nav-links a` 
+  would work since the list only contains links, anyway.
+
+  To avoid repetitions, I recommend more use of utility classes, similar to how you’re using the 
+  `.active` class. Modular, reusable styles can be applied throughout the HTML without having 
+  to redefine everything. This improves maintainability. Similarly, using custom properties 
+  (CSS variables) would be a nice improvement. They make it easier to style similar or 
+  repeated elements, especially on other pages.
+
+  Obviously, this is perfectly fine within the scope of the challenge, but these are things to 
+  keep in mind for future projects! I'm looking forward to what you come up with next :)
+*/
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #e1d4c9;
+  font-family: Inter, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.container {
+  max-width: 1360px;
+  width: 100%;
+  padding: 0 20px;
+}
+
+header {
+  width: 100%;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.25rem;
+  padding: 20px 40px;
+}
+
+.nav-links ul {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+/* 
+  Unnecessary chaining of elements considering the HTML structure.
+*/
+
+.nav-links ul li {
+  margin-right: 40px;
+}
+
+.nav-links ul li a:hover {
+  text-decoration: underline;
+  text-underline-offset: 5px;
+}
+
+.nav-menu {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  text-shadow: 3px 5px 5px rgba(0, 0, 0, 0.331);
+}
+
+.nav-coffee-cup {
+  margin-left: 2px;
+  margin-bottom: -1px;
+  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.331);
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  font-weight: 400;
+  color: black;
+}
+
+/* 
+  Inconsistent formatting!
+*/
+
+.hero {
+  background-image: url("assets/home/img-hero.png");
+  background-size: cover;
+  padding: 100px 20px;
+  color: white;
+  position: relative;
+  border-radius: 40px;
+  margin: 0 40px;
+  max-width: 1360px;
+}
+.hero_content {
+  display: flex;
+  width: 530px;
+  /* height: 228px; */
+  box-sizing: border-box;
+  margin-left: 100px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 40px;
+}
+.hero_content span {
+  font-size: 72px;
+  color: #b0907a;
+  font-style: italic;
+  font-weight: 600;
+  line-height: 105%;
+  margin-bottom: 10px;
+}
+.hero h1 {
+  font-size: 72px;
+  font-weight: 600;
+  line-height: 105%;
+  color: #e1d4c9;
+}
+
+.hero p {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 150%;
+  max-width: 530px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.menu-btn {
+  background-color: #e1d4c9;
+  box-sizing: border-box;
+  color: #403f3d;
+  width: 200px;
+  height: 64px;
+  padding: 20px 0px;
+  font-size: 1.1rem;
+  border-radius: 100px;
+  display: inline-block;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+.menu-btn a {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 150%;
+}
+
+.favorite_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  margin: 100px 0px;
+}
+
+.favorite_container h2 {
+  font-size: 60px;
+  font-weight: 600;
+  line-height: 125%;
+  color: #403f3d;
+}
+
+.favorite_container h2 em {
+  color: #b0907a;
+  font-style: italic;
+}
+.coffee-carousel {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
+  /* position: relative; */
+}
+
+.coffee-img {
+  width: 300px;
+  height: auto;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+}
+
+/* 
+  Illustration of a modular class that can be used throughout for one specific purpose 
+  and is combineable with other classes.
+*/
+
+.animation {
+  color: #403f3d;
+  transition-duration: 300ms;
+}
+
+.animation:hover {
+  transform: scale(1.1);
+}
+
+/* 
+  While tasteful as is, you could do a lot more with the animations. The `transition`
+  property allows you to define duration, a (custom) timing function etc. Combined with
+  various differences between properties of different states of an element, you could
+  push this much further.
+
+  (Although, as usual, keep accesibility and general usability in mind.)
+*/
+
+.carousel-btn {
+  background-color: #e1d4c9;
+  border: 2px solid #665f55;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  font-size: 36px;
+  cursor: pointer;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #403f3d;
+  transition-duration: 300ms;
+}
+.carousel-btn:hover {
+  background-color: #b0907a;
+  transform: translateY(-50%) scale(1.1);
+}
+
+.coffee-item-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 480px;
+  height: 140px;
+  box-sizing: border-box;
+  gap: 16px;
+  color: #403f3d;
+}
+.coffee-item {
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 125%;
+}
+
+.coffee-description {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 150%;
+  text-align: center;
+  margin: 0;
+}
+.coffee-price {
+  font-size: 20px;
+  font-weight: bold;
+}
+.carousel-indicators {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 40px;
+}
+
+.indicator {
+  width: 40px;
+  height: 4px;
+  background-color: #d3c2b8;
+  display: inline-block;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.indicator .active {
+  background-color: #b0907a;
+}
+
+.indicator:hover {
+  background-color: #b0907a;
+}
+
+.about p {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  font-size: 4rem;
+  margin-top: 5px;
+}
+
+.about span {
+  color: #b0907a;
+  font-style: italic;
+}
+
+.gallery {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 50px;
+}
+
+.gallery-left img,
+.gallery-right img {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  border-radius: 5%;
+}
+
+footer {
+  height: 450px;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #665f55;
+  border-radius: 40px;
+  margin-top: 50px;
+}
+
+.footer-right-side {
+  color: #e1d4c9;
+}
+
+.footer-right-side p {
+  font-size: 1.5rem;
+  margin-bottom: 30px;
+}
+
+.footer-right-side ul {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.footer-right-side ul li {
+  margin-bottom: 20px;
+}
+
+.footer-right-side ul li img {
+  margin-bottom: -2px;
+}
+
+.footer-social-links {
+  margin-top: 20px;
+}
+
+.footer-social-links ul {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.footer-social-links ul li {
+  border: 1px solid #e1d4c9;
+  border-radius: 50%;
+  padding: 10px;
+  margin-right: 20px;
+}
+
+.footer-social-links ul li img {
+  width: 30px;
+}
+
+.sip-p {
+  color: #e1d4c9;
+  font-size: 3.75rem;
+}
+
+.coffee-p {
+  color: #b0907a;
+  font-size: 3.5em;
+  font-style: italic;
+}
